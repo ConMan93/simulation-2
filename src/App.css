@@ -1,11 +1,11 @@
 .App {
-padding-top: 80px;
+  padding-top: 80px;
 }
 header {
   position: fixed;
   width: 100%;
   height: 80px;
-  background-color: #D34735;
+  background-color: #AB2A19;
   align-items: center;
   display: flex;
   top: 0px;
@@ -23,6 +23,7 @@ header {
   border-radius: 10px;
   cursor: pointer;
   font-size: 14px;
+  text-decoration: none;
 }
 .header-button:hover {
   background-color: #ED6B5A;
@@ -32,4 +33,8 @@ header h2 {
   color: white;
   margin-left: 35px;
   font-size: 36px;
+}
+.main-container {
+  display: flex;
+  justify-content: space-around;
 }

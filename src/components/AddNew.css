@@ -1,5 +1,48 @@
 .AddNew {
-    width: 400px;
+    /* position: fixed; */
+    /* box-shadow: 0 0 0 2000px rgba(0, 0, 0, 0.5); */
+    /* top: calc((100% / 2) - 200px); */
+    /* left: calc((100% / 2) - 200px); */
+    width: 350px;
     padding: 10px;
-
+    border-radius: 10px;
+    /* z-index: 50; */
+    background: #3AD886;
+    height: 600px;
+    /* display: inline-block; */
+    margin: 10px;
+    margin-left: 40px;
+}
+.AddNew div {
+    margin-top: 20px;
+}
+.AddNew div input {
+    width: 90%;
+}
+.add-new-buttons {
+    margin-top: 20px;
+    display: flex;
+    padding: 10px;
+    justify-content: space-around;
+}
+.add-new-button {
+    background-color: #ED6B5A;
+    color: white;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: none;
+    margin-top: 10px;
+}
+.add-new-button:hover {
+    background-color: #AB2A19;
+}
+.add-new-image img {
+    max-width: 200px;
+    max-height: 200px;
 }

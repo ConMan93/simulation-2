@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import AddNew from './components/AddNew';
-import RenderProducts from './components/RenderProducts';
-import { Link, Route, Switch } from 'react-router-dom';
+import Dashboard from './components/Dashboard';
+import Header from './components/Header';
+// import { Link, Route, Switch } from 'react-router-dom';
 import './App.css';
 import axios from 'axios';
 
@@ -9,25 +10,14 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      products: [],
-      
+      products: []
     }
     this.getProducts = this.getProducts.bind(this);
-    // this.createProduct = this.createProduct.bind(this);
-    this.updateProduct = this.updateProduct.bind(this);
-    this.deleteProduct = this.deleteProduct.bind(this);
   }
   getProducts() {
     axios.get('/api/products').then(res => {
       this.setState({products: res.data});
-      console.log(this.state.products);
-    })
-  }
-  updateProduct() {
-
-  }
-  deleteProduct() {
-
+    }).catch(err => console.error(err))
   }
   componentDidMount() {
     this.getProducts();
@@ -35,12 +25,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header>
-          <h2>SHELFIE</h2>
-          <div className="header-button">Add a New Product</div>
-        </header>
-        <RenderProducts products={this.state.products} />
-        <AddNew />
+        <Header />
+        {/* <Route path="/addnew" render={props => <AddNew {...props} createProduct={this.createProduct} />} /> */}
+        <div className="main-container">
+          <Dashboard getProducts={this.getProducts} products={this.state.products} />
+          <AddNew getProducts={this.getProducts} />
+        </div>
       </div>
     );
   }
