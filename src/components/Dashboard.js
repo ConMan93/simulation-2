@@ -14,17 +14,3 @@ const Dashboard = (props) => {
 }
 
 export default Dashboard;
-
-// class Dashboard extends Component {
-//     render() {
-//         return(
-//             <div className="RenderProducts">
-//                 {this.props.products.map((product, i) => {
-//                     return <Product deleteProduct={this.props.deleteProduct} getProducts={this.props.getProducts} product={product} key={i} />
-//                 })}
-//             </div>
-//         )
-//     }
-// }
-
-// export default Dashboard;

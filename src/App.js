@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import AddNew from './components/AddNew';
 import Dashboard from './components/Dashboard';
 import Header from './components/Header';
-// import { Link, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import axios from 'axios';
 
@@ -40,8 +40,10 @@ class App extends Component {
       <div className="App">
         <Header />
         <div className="main-container">
-          <Dashboard updateProduct={this.updateProduct} deleteProduct={this.deleteProduct} products={this.state.products} />
-          <AddNew getProducts={this.getProducts} />
+        <Switch>
+          <Route path="/" exact render={props => <Dashboard {...props} updateProduct={this.updateProduct} deleteProduct={this.deleteProduct} products={this.state.products} />} />
+          <Route path="/addnew" render={props => <AddNew {...props} getProducts={this.getProducts} />} />
+        </Switch>
         </div>
       </div>
     );

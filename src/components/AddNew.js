@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import gear from '../images/gear_318-56262.jpg';
-// import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import './AddNew.css'
 
 class AddNew extends Component {
@@ -15,7 +15,7 @@ class AddNew extends Component {
         }
         this.updateInput = this.updateInput.bind(this);
         this.createProduct = this.createProduct.bind(this);
-        this.cancelProduct = this.cancelProduct.bind(this);
+        this.goHome = this.goHome.bind(this);
     }
     createProduct() {
         if (this.state.newName.trim() !== '' && !isNaN(this.state.newPrice))    {
@@ -25,13 +25,14 @@ class AddNew extends Component {
             axios.post('/api/products', {name, img, price}).then(res => {
                 this.setState({newName: '', newPrice: '', newImg: '', displayWarning: false})
                 this.props.getProducts();
+                this.props.history.push('/');
             }).catch(err => console.error(err))
         } else
             this.setState({displayWarning: true});
     }
-    cancelProduct() {
-        this.setState({newName: '', newPrice: '', newImg: '', displayWarning: false})
-    }    
+    goHome() {
+        this.props.history.push('/');
+    }
     updateInput(val, which) {
         switch (which) {
             case 1:
@@ -63,7 +64,7 @@ class AddNew extends Component {
                     Price:<br /><br /><input value={this.state.newPrice} onChange={e => this.updateInput(e.target.value, 3)} />
                 </div>
                 <div className="add-new-buttons">
-                    <div className="add-new-button" onClick={this.cancelProduct}>Cancel</div>
+                    <div className="add-new-button" onClick={this.goHome}>Cancel</div>
                     <div className="add-new-button" onClick={this.createProduct}>Add to Inventory</div>
                 </div>
                 {this.state.displayWarning ? <div>Input Problem, check that the price is an integer and the other fields haven't been left blank</div> : false}
@@ -72,4 +73,4 @@ class AddNew extends Component {
     }
 }
 
-export default AddNew;
+export default withRouter(AddNew);
