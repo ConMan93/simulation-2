@@ -1,0 +1,19 @@
+.Product {
+    padding: 10px;
+    width: 400px;
+    background-color: #ED6B5A;
+    border-radius: 10px;
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: white;
+}
+.product-image {
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+    padding: 10px;
+}
+.product-info {
+    padding: 10px;
+}

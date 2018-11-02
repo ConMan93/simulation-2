@@ -1,25 +1,46 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import AddNew from './components/AddNew';
+import RenderProducts from './components/RenderProducts';
+import { Link, Route, Switch } from 'react-router-dom';
 import './App.css';
+import axios from 'axios';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      products: [],
+      
+    }
+    this.getProducts = this.getProducts.bind(this);
+    // this.createProduct = this.createProduct.bind(this);
+    this.updateProduct = this.updateProduct.bind(this);
+    this.deleteProduct = this.deleteProduct.bind(this);
+  }
+  getProducts() {
+    axios.get('/api/products').then(res => {
+      this.setState({products: res.data});
+      console.log(this.state.products);
+    })
+  }
+  updateProduct() {
+
+  }
+  deleteProduct() {
+
+  }
+  componentDidMount() {
+    this.getProducts();
+  }
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+        <header>
+          <h2>SHELFIE</h2>
+          <div className="header-button">Add a New Product</div>
         </header>
+        <RenderProducts products={this.state.products} />
+        <AddNew />
       </div>
     );
   }
