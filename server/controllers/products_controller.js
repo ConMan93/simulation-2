@@ -33,6 +33,7 @@ module.exports = {
     deleteProduct(appReq, appRes)   {
         let db = appReq.app.get('db');
         let id = Number(appReq.params.id);
+        // console.log('hi');
         db.delete_product(id).then(dbRes => {
             appRes.status(200).send(dbRes);
         }).catch(err => console.error(err));
