@@ -5,7 +5,9 @@ const pc = require('./controllers/products_controller');
 require('dotenv').config();
 
 const app = express();
+
 app.use(bodyParser.json());
+app.use(express.static('build'))
 
 let { CONNECTION_STRING: cs, PORT: port} = process.env;
 

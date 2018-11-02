@@ -9,10 +9,16 @@ class Product extends Component {
             editable: false,
             name: '',
             img: '',
-            price: ''
+            price: '',
+            isUpdated: false
 
         }
         this.editSave = this.editSave.bind(this);
+    }
+    componentDidUpdate(prevProps) {
+        // this just changes the background color of a product if you update it. I couldn't come up with  another place to use componentDidUpdate given my code structure
+        if (this.props.product.name != prevProps.product.name || this.props.product.img != prevProps.product.img || this.props.product.price != prevProps.product.price)
+            this.setState({isUpdated: true})
     }
     editSave() {
         if (!this.state.editable) {
@@ -44,8 +50,10 @@ class Product extends Component {
         }
     }
     render() {
+        
+        let bgColor = this.state.isUpdated ? '#AB2A19' : '#ED6B5A'
         return(
-            <div className="Product">
+            <div className="Product" style={{backgroundColor: bgColor}}>
                 <div className="product-image">
                     {this.props.product.img.trim() ? <img src={this.props.product.img} alt={this.props.product.name} /> : <img src={gear} alt={this.props.product.name} />}
                 </div>
